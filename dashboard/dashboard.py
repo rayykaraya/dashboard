@@ -34,7 +34,6 @@ try:
     if 'order_purchase_timestamp' in full_data.columns:
         full_data['order_purchase_timestamp'] = pd.to_datetime(full_data['order_purchase_timestamp'])
 
-    st.write(full_data.head())  # Tampilkan beberapa baris pertama data
 
 except FileNotFoundError:
     st.error("❌ File tidak ditemukan! Pastikan file CSV sudah ada di dalam repository.")
