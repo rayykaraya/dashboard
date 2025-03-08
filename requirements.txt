@@ -63,7 +63,6 @@ pyproj==3.7.1
 pyshp==2.3.1
 python-dateutil==2.9.0.post0
 pytz==2025.1
-pywin32==308
 pyzmq==26.2.1
 rasterio==1.4.3
 referencing==0.36.2
