@@ -24,7 +24,15 @@ st.markdown("""
 st.title("📊 Analisis E-Commerce Brasil")
 
 # ========== LOAD DATA ==========
-full_data = pd.read_csv("hasil_analisis.csv")
+# File Uploader untuk mengatasi FileNotFoundError
+uploaded_file = st.file_uploader("Upload hasil_analisis.csv", type="csv")
+
+if uploaded_file is not None:
+    full_data = pd.read_csv(uploaded_file)
+    st.write("✅ File berhasil dimuat!")
+    st.write(full_data.head())  # Tampilkan data
+else:
+    st.error("❌ File tidak ditemukan! Silakan upload CSV.")
 full_data['order_purchase_timestamp'] = pd.to_datetime(full_data['order_purchase_timestamp'])
 
 # ========== SIDEBAR ==========
