@@ -25,7 +25,7 @@ st.title("📊 Analisis E-Commerce Brasil")
 
 # ========== LOAD DATA ==========
 # Load file CSV langsung dari repository (tanpa harus di-upload)
-file_path = "data/hasil_analisis.csv"  # Sesuaikan dengan lokasi file dalam repo
+file_path = "dashboard/hasil_analisis.csv"  # Sesuaikan dengan lokasi file dalam repo
 
 try:
     full_data = pd.read_csv(file_path)
