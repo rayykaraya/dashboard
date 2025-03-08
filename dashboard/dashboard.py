@@ -29,7 +29,6 @@ file_path = "dashboard/hasil_analisis.csv"  # Sesuaikan dengan lokasi file dalam
 
 try:
     full_data = pd.read_csv(file_path)
-    st.success("✅ File berhasil dimuat secara otomatis!")
 
     # Konversi datetime jika ada kolomnya
     if 'order_purchase_timestamp' in full_data.columns:
