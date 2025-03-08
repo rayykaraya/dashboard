@@ -24,15 +24,21 @@ st.markdown("""
 st.title("📊 Analisis E-Commerce Brasil")
 
 # ========== LOAD DATA ==========
-# File Uploader untuk mengatasi FileNotFoundError
-uploaded_file = st.file_uploader("Upload hasil_analisis.csv", type="csv")
+# Load file CSV langsung dari repository (tanpa harus di-upload)
+file_path = "data/hasil_analisis.csv"  # Sesuaikan dengan lokasi file dalam repo
 
-if uploaded_file is not None:
-    full_data = pd.read_csv(uploaded_file)
-    st.write("✅ File berhasil dimuat!")
-    st.write(full_data.head())  # Tampilkan data
-else:
-    st.error("❌ File tidak ditemukan! Silakan upload CSV.")
+try:
+    full_data = pd.read_csv(file_path)
+    st.success("✅ File berhasil dimuat secara otomatis!")
+
+    # Konversi datetime jika ada kolomnya
+    if 'order_purchase_timestamp' in full_data.columns:
+        full_data['order_purchase_timestamp'] = pd.to_datetime(full_data['order_purchase_timestamp'])
+
+    st.write(full_data.head())  # Tampilkan beberapa baris pertama data
+
+except FileNotFoundError:
+    st.error("❌ File tidak ditemukan! Pastikan file CSV sudah ada di dalam repository.")
 full_data['order_purchase_timestamp'] = pd.to_datetime(full_data['order_purchase_timestamp'])
 
 # ========== SIDEBAR ==========
